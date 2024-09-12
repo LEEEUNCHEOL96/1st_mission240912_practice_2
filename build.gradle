@@ -33,8 +33,10 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
+	// 레이아웃 적용
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	// valid 적용
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 tasks.named('test') {
