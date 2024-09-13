@@ -2,15 +2,11 @@ package com.example.demo.Article;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RequestMapping("/article")
@@ -20,9 +16,9 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @GetMapping("/list")
-    public String articleList(Model model) {
-        List<Article> articleList = this.articleService.articleList();
-        model.addAttribute("articleList", articleList);
+    public String articleList(Model model, @RequestParam(value = "page",defaultValue = "0") int page) {
+        Page<Article> articlePage  = this.articleService.getList(page);
+        model.addAttribute("articlePage", articlePage);
 
         return "article_list";
     }

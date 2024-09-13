@@ -1,3 +1,7 @@
+# 내비바 등록
+- layout 에 내비바 라인 기입 후 
+- 공통탬플릿으로 분리 
+
 # article 등록하기 완료
 # article_form/Controller 게시글생성준비
 - list_detail 에 버튼생성

@@ -1,6 +1,9 @@
 package com.example.demo.Article;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,4 +34,10 @@ public class ArticleService {
         article.setCreateDate(LocalDateTime.now());
         this.articleRepository.save(article);
     }
+
+    public Page<Article> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        return this.articleRepository.findAll(pageable);
+    }
+
 }
